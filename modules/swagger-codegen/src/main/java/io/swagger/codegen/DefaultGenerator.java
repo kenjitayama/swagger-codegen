@@ -9,6 +9,7 @@ import io.swagger.models.parameters.Parameter;
 import io.swagger.util.Json;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.logging.Log;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
     protected CodegenConfig config;
     protected ClientOptInput opts;
     protected Swagger swagger;
+    private Boolean cleanDebugInfo;
 
     @Override
     public Generator opts(ClientOptInput opts) {
@@ -45,6 +47,9 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         Set<String> modelsToGenerate = null;
         Set<String> apisToGenerate = null;
         Set<String> supportingFilesToGenerate = null;
+
+        this.cleanDebugInfo = System.getProperty("cleanDebugInfo") != null;
+        Boolean isFirstCleanDebugInfo = true;
 
         // allows generating only models by specifying a CSV of models to generate, or empty for all
         if(System.getProperty("models") != null) {
@@ -88,7 +93,20 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         if (swagger == null || config == null) {
             throw new RuntimeException("missing swagger input or config!");
         }
+
+
+        if (this.cleanDebugInfo) {
+            System.out.println("{");
+        }
+
         if (System.getProperty("debugSwagger") != null) {
+            if (this.cleanDebugInfo) {
+                if (!isFirstCleanDebugInfo) {
+                    System.out.print(",");
+                }
+                isFirstCleanDebugInfo = false;
+                System.out.print("\"swagger\": ");
+            }
             Json.prettyPrint(swagger);
         }
         List<File> files = new ArrayList<File>();
@@ -331,6 +349,13 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
             }
         }
         if (System.getProperty("debugModels") != null) {
+            if (this.cleanDebugInfo) {
+                if (!isFirstCleanDebugInfo) {
+                    System.out.print(",");
+                }
+                isFirstCleanDebugInfo = false;
+                System.out.print("\"models\": ");
+            }
             LOGGER.info("############ Model info ############");
             Json.prettyPrint(allModels);
         }
@@ -465,6 +490,13 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         }
 
         if (System.getProperty("debugOperations") != null) {
+            if (this.cleanDebugInfo) {
+                if (!isFirstCleanDebugInfo) {
+                    System.out.print(",");
+                }
+                isFirstCleanDebugInfo = false;
+                System.out.print("\"operations\": ");
+            }
             LOGGER.info("############ Operation info ############");
             Json.prettyPrint(allOperations);
         }
@@ -504,9 +536,21 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         config.postProcessSupportingFileData(bundle);
 
         if (System.getProperty("debugSupportingFiles") != null) {
+            if (this.cleanDebugInfo) {
+                if (!isFirstCleanDebugInfo) {
+                    System.out.print(",");
+                }
+                isFirstCleanDebugInfo = false;
+                System.out.print("\"supportingFiles\": ");
+            }
             LOGGER.info("############ Supporting file info ############");
             Json.prettyPrint(bundle);
         }
+
+        if (this.cleanDebugInfo) {
+            System.out.println("}");
+        }
+
 
         if(generateSupportingFiles) {
             for (SupportingFile support : config.supportingFiles()) {
