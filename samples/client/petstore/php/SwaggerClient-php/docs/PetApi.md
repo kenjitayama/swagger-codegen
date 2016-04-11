@@ -5,13 +5,13 @@ All URIs are relative to *http://petstore.swagger.io/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addPet**](PetApi.md#addPet) | **POST** /pet | Add a new pet to the store
-[**addPetUsingByteArray**](PetApi.md#addPetUsingByteArray) | **POST** /pet?testing_byte_array=true | Fake endpoint to test byte array in body parameter for adding a new pet to the store
+[**addPetUsingByteArray**](PetApi.md#addPetUsingByteArray) | **POST** /pet?testing_byte_array&#x3D;true | Fake endpoint to test byte array in body parameter for adding a new pet to the store
 [**deletePet**](PetApi.md#deletePet) | **DELETE** /pet/{petId} | Deletes a pet
 [**findPetsByStatus**](PetApi.md#findPetsByStatus) | **GET** /pet/findByStatus | Finds Pets by status
 [**findPetsByTags**](PetApi.md#findPetsByTags) | **GET** /pet/findByTags | Finds Pets by tags
 [**getPetById**](PetApi.md#getPetById) | **GET** /pet/{petId} | Find pet by ID
-[**getPetByIdInObject**](PetApi.md#getPetByIdInObject) | **GET** /pet/{petId}?response=inline_arbitrary_object | Fake endpoint to test inline arbitrary object return by &#39;Find pet by ID&#39;
-[**petPetIdtestingByteArraytrueGet**](PetApi.md#petPetIdtestingByteArraytrueGet) | **GET** /pet/{petId}?testing_byte_array=true | Fake endpoint to test byte array return by &#39;Find pet by ID&#39;
+[**getPetByIdInObject**](PetApi.md#getPetByIdInObject) | **GET** /pet/{petId}?response&#x3D;inline_arbitrary_object | Fake endpoint to test inline arbitrary object return by &#39;Find pet by ID&#39;
+[**petPetIdtestingByteArraytrueGet**](PetApi.md#petPetIdtestingByteArraytrueGet) | **GET** /pet/{petId}?testing_byte_array&#x3D;true | Fake endpoint to test byte array return by &#39;Find pet by ID&#39;
 [**updatePet**](PetApi.md#updatePet) | **PUT** /pet | Update an existing pet
 [**updatePetWithForm**](PetApi.md#updatePetWithForm) | **POST** /pet/{petId} | Updates a pet in the store with form data
 [**uploadFile**](PetApi.md#uploadFile) | **POST** /pet/{petId}/uploadImage | uploads an image
@@ -30,9 +30,9 @@ Add a new pet to the store
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $body = new \Swagger\Client\Model\Pet(); // \Swagger\Client\Model\Pet | Pet object that needs to be added to the store
 
 try { 
@@ -77,9 +77,9 @@ Fake endpoint to test byte array in body parameter for adding a new pet to the s
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $body = "B"; // string | Pet object in the form of byte array
 
 try { 
@@ -124,9 +124,9 @@ Deletes a pet
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $pet_id = 789; // int | Pet id to delete
 $api_key = "api_key_example"; // string | 
 
@@ -173,9 +173,9 @@ Multiple status values can be provided with comma separated strings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $status = array("available"); // string[] | Status values that need to be considered for query
 
 try { 
@@ -221,9 +221,9 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $tags = array("tags_example"); // string[] | Tags to filter by
 
 try { 
@@ -268,14 +268,14 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client::getDefaultConfiguration->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
-// Swagger\Client::getDefaultConfiguration->setApiKeyPrefix('api_key', 'BEARER');
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: api_key
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'BEARER');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $pet_id = 789; // int | ID of pet that needs to be fetched
 
 try { 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [petstore_auth](../README.md#petstore_auth)
+[petstore_auth](../README.md#petstore_auth), [api_key](../README.md#api_key)
 
 ### HTTP reuqest headers
 
@@ -320,14 +320,14 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client::getDefaultConfiguration->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
-// Swagger\Client::getDefaultConfiguration->setApiKeyPrefix('api_key', 'BEARER');
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: api_key
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'BEARER');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $pet_id = 789; // int | ID of pet that needs to be fetched
 
 try { 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [petstore_auth](../README.md#petstore_auth)
+[petstore_auth](../README.md#petstore_auth), [api_key](../README.md#api_key)
 
 ### HTTP reuqest headers
 
@@ -372,14 +372,14 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client::getDefaultConfiguration->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
-// Swagger\Client::getDefaultConfiguration->setApiKeyPrefix('api_key', 'BEARER');
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: api_key
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'BEARER');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $pet_id = 789; // int | ID of pet that needs to be fetched
 
 try { 
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [petstore_auth](../README.md#petstore_auth)
+[petstore_auth](../README.md#petstore_auth), [api_key](../README.md#api_key)
 
 ### HTTP reuqest headers
 
@@ -425,9 +425,9 @@ Update an existing pet
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $body = new \Swagger\Client\Model\Pet(); // \Swagger\Client\Model\Pet | Pet object that needs to be added to the store
 
 try { 
@@ -472,9 +472,9 @@ Updates a pet in the store with form data
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $pet_id = "pet_id_example"; // string | ID of pet that needs to be updated
 $name = "name_example"; // string | Updated name of the pet
 $status = "status_example"; // string | Updated status of the pet
@@ -523,9 +523,9 @@ uploads an image
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: petstore_auth
-Swagger\Client::getDefaultConfiguration->setAccessToken('YOUR_ACCESS_TOKEN');
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\PetApi();
+$api_instance = new Swagger\Client\Api\PetApi();
 $pet_id = 789; // int | ID of pet to update
 $additional_metadata = "additional_metadata_example"; // string | Additional data to pass to server
 $file = "/path/to/file.txt"; // \SplFileObject | file to upload

@@ -38,7 +38,7 @@ use \ArrayAccess;
  * Name Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description Model for testing model name same as property name
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
@@ -47,44 +47,73 @@ use \ArrayAccess;
 class Name implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Name';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'name' => 'int'
+        'name' => 'int',
+        'snake_case' => 'int'
     );
   
+    static function swaggerTypes() {
+        return self::$swaggerTypes;
+    }
+
     /** 
       * Array of attributes where the key is the local name, and the value is the original name
       * @var string[] 
       */
     static $attributeMap = array(
-        'name' => 'name'
+        'name' => 'name',
+        'snake_case' => 'snake_case'
     );
   
+    static function attributeMap() {
+        return self::$attributeMap;
+    }
+
     /**
       * Array of attributes to setter functions (for deserialization of responses)
       * @var string[]
       */
     static $setters = array(
-        'name' => 'setName'
+        'name' => 'setName',
+        'snake_case' => 'setSnakeCase'
     );
   
+    static function setters() {
+        return self::$setters;
+    }
+
     /**
       * Array of attributes to getter functions (for serialization of requests)
       * @var string[]
       */
     static $getters = array(
-        'name' => 'getName'
+        'name' => 'getName',
+        'snake_case' => 'getSnakeCase'
     );
   
-    
+    static function getters() {
+        return self::$getters;
+    }
+
     /**
       * $name 
       * @var int
       */
     protected $name;
-    
+    /**
+      * $snake_case 
+      * @var int
+      */
+    protected $snake_case;
 
     /**
      * Constructor
@@ -92,11 +121,13 @@ class Name implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        
+        
         if ($data != null) {
             $this->name = $data["name"];
+            $this->snake_case = $data["snake_case"];
         }
     }
-    
     /**
      * Gets name
      * @return int
@@ -117,7 +148,26 @@ class Name implements ArrayAccess
         $this->name = $name;
         return $this;
     }
-    
+    /**
+     * Gets snake_case
+     * @return int
+     */
+    public function getSnakeCase()
+    {
+        return $this->snake_case;
+    }
+  
+    /**
+     * Sets snake_case
+     * @param int $snake_case 
+     * @return $this
+     */
+    public function setSnakeCase($snake_case)
+    {
+        
+        $this->snake_case = $snake_case;
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -165,10 +215,10 @@ class Name implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

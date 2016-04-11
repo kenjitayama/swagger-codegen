@@ -38,7 +38,7 @@ use \ArrayAccess;
  * Model200Response Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description Model for testing model name starting with number
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Model200Response implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = '200_response';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -54,6 +60,10 @@ class Model200Response implements ArrayAccess
         'name' => 'int'
     );
   
+    static function swaggerTypes() {
+        return self::$swaggerTypes;
+    }
+
     /** 
       * Array of attributes where the key is the local name, and the value is the original name
       * @var string[] 
@@ -62,6 +72,10 @@ class Model200Response implements ArrayAccess
         'name' => 'name'
     );
   
+    static function attributeMap() {
+        return self::$attributeMap;
+    }
+
     /**
       * Array of attributes to setter functions (for deserialization of responses)
       * @var string[]
@@ -70,6 +84,10 @@ class Model200Response implements ArrayAccess
         'name' => 'setName'
     );
   
+    static function setters() {
+        return self::$setters;
+    }
+
     /**
       * Array of attributes to getter functions (for serialization of requests)
       * @var string[]
@@ -78,13 +96,15 @@ class Model200Response implements ArrayAccess
         'name' => 'getName'
     );
   
-    
+    static function getters() {
+        return self::$getters;
+    }
+
     /**
       * $name 
       * @var int
       */
     protected $name;
-    
 
     /**
      * Constructor
@@ -92,11 +112,12 @@ class Model200Response implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        
+        
         if ($data != null) {
             $this->name = $data["name"];
         }
     }
-    
     /**
      * Gets name
      * @return int
@@ -117,7 +138,6 @@ class Model200Response implements ArrayAccess
         $this->name = $name;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -165,10 +185,10 @@ class Model200Response implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

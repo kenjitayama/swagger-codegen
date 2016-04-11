@@ -34,7 +34,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var opts = { 
   'body': new SwaggerPetstore.Pet() // {Pet} Pet object that needs to be added to the store
@@ -86,7 +86,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var opts = { 
   'body': "B" // {String} Pet object in the form of byte array
@@ -138,7 +138,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var petId = 789; // {Integer} Pet id to delete
 
@@ -193,7 +193,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var opts = { 
   'status': ["available"] // {[String]} Status values that need to be considered for query
@@ -245,7 +245,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var opts = { 
   'tags': ["tags_example"] // {[String]} Tags to filter by
@@ -293,17 +293,17 @@ Returns a pet when ID &lt; 10.  ID &gt; 10 or nonintegers will simulate API erro
 var SwaggerPetstore = require('swagger-petstore');
 var defaultClient = SwaggerPetstore.ApiClient.default;
 
-// Configure OAuth2 access token for authorization: petstore_auth
-var petstore_auth = defaultClient.authentications['petstore_auth'];
-petstore_auth.accessToken = "YOUR ACCESS TOKEN"
-
 // Configure API key authorization: api_key
 var api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix['api_key'] = "Token"
 
-var api = new SwaggerPetstore.PetApi()
+// Configure OAuth2 access token for authorization: petstore_auth
+var petstore_auth = defaultClient.authentications['petstore_auth'];
+petstore_auth.accessToken = "YOUR ACCESS TOKEN"
+
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var petId = 789; // {Integer} ID of pet that needs to be fetched
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth), [api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP reuqest headers
 
@@ -350,17 +350,17 @@ Returns a pet when ID &lt; 10.  ID &gt; 10 or nonintegers will simulate API erro
 var SwaggerPetstore = require('swagger-petstore');
 var defaultClient = SwaggerPetstore.ApiClient.default;
 
-// Configure OAuth2 access token for authorization: petstore_auth
-var petstore_auth = defaultClient.authentications['petstore_auth'];
-petstore_auth.accessToken = "YOUR ACCESS TOKEN"
-
 // Configure API key authorization: api_key
 var api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix['api_key'] = "Token"
 
-var api = new SwaggerPetstore.PetApi()
+// Configure OAuth2 access token for authorization: petstore_auth
+var petstore_auth = defaultClient.authentications['petstore_auth'];
+petstore_auth.accessToken = "YOUR ACCESS TOKEN"
+
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var petId = 789; // {Integer} ID of pet that needs to be fetched
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth), [api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP reuqest headers
 
@@ -407,17 +407,17 @@ Returns a pet when ID &lt; 10.  ID &gt; 10 or nonintegers will simulate API erro
 var SwaggerPetstore = require('swagger-petstore');
 var defaultClient = SwaggerPetstore.ApiClient.default;
 
-// Configure OAuth2 access token for authorization: petstore_auth
-var petstore_auth = defaultClient.authentications['petstore_auth'];
-petstore_auth.accessToken = "YOUR ACCESS TOKEN"
-
 // Configure API key authorization: api_key
 var api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix['api_key'] = "Token"
 
-var api = new SwaggerPetstore.PetApi()
+// Configure OAuth2 access token for authorization: petstore_auth
+var petstore_auth = defaultClient.authentications['petstore_auth'];
+petstore_auth.accessToken = "YOUR ACCESS TOKEN"
+
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var petId = 789; // {Integer} ID of pet that needs to be fetched
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth), [api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP reuqest headers
 
@@ -468,7 +468,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var opts = { 
   'body': new SwaggerPetstore.Pet() // {Pet} Pet object that needs to be added to the store
@@ -520,7 +520,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var petId = "petId_example"; // {String} ID of pet that needs to be updated
 
@@ -577,7 +577,7 @@ var defaultClient = SwaggerPetstore.ApiClient.default;
 var petstore_auth = defaultClient.authentications['petstore_auth'];
 petstore_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new SwaggerPetstore.PetApi()
+var apiInstance = new SwaggerPetstore.PetApi()
 
 var petId = 789; // {Integer} ID of pet to update
 
